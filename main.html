@@ -1,8 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    <script type="text/javascript" src="./script.js">
-</script>
-  </body>
+<head>
+    <title>URL Manipulation</title>
+</head>
+<body>
+    <form id="urlForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year">
+        
+        <input type="submit" id="button" value="Generate URL">
+    </form>
+    
+    <h3 id="url">https://localhost:8080/</h3>
+    
+    <script>
+        // Function to update the URL with the query string
+        function updateURL() {
+            const name = document.getElementById("name").value;
+            const year = document.getElementById("year").value;
+            const url = `https://localhost:8080/?name=${name}&year=${year}`;
+            document.getElementById("url").textContent = url;
+        }
 
+        // Add an event listener to the form to handle the form submission
+        document.getElementById("urlForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            updateURL(); // Call the updateURL function to update the URL
+        });
+    </script>
+</body>
 </html>
